@@ -1,6 +1,15 @@
 import './App.css';
+import { useState, useEffect } from 'react';
+import { voxCtl } from '../utility/voxctl';
 
 function App() {
+  const [bgColor, setBgColor] = useState('bg-neutral-700');
+
+  useEffect(() => {
+    const interval = setInterval(() => voxCtl.updateStatus(setBgColor), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="h-screen bg-stone-800 p-4 text-white">
       <div className="mx-auto max-w-xl">
@@ -10,19 +19,32 @@ function App() {
           placeholder="Enter text here..."
         />
         <div className="flex gap-4 py-2">
-          <button className="w-full rounded-lg bg-stone-900 p-4 text-lg">
+          <button
+            onClick={() => voxCtl.stop()}
+            className="w-full rounded-lg bg-stone-900 p-4 text-lg"
+          >
             Stop
           </button>
-          <button className="w-full rounded-lg bg-stone-900 p-4 text-lg">
-            Test
+          <button
+            onClick={() => voxCtl.speak('Test')}
+            className="w-full rounded-lg bg-stone-900 p-4 text-lg"
+          >
+            Speak
           </button>
-          <button className="w-full rounded-lg bg-stone-900 p-4 text-lg">
+          <button
+            onClick={() => voxCtl.speak('Test')}
+            className="w-full rounded-lg bg-stone-900 p-4 text-lg"
+          >
             Next
           </button>
         </div>
-        <button className="w-full rounded-lg bg-stone-900 p-4 text-lg">
+        <button
+          onClick={() => voxCtl.speakClipboard()}
+          className="w-full rounded-lg bg-stone-900 p-4 text-lg"
+        >
           Speak Clipboard
         </button>
+        <div className={`m-4 rounded-lg p-1 ${bgColor}`}></div>
       </div>
     </div>
   );
