@@ -1,27 +1,26 @@
-import "./App.css";
+import './App.css';
 
 function App() {
   return (
-    <div className="h-screen bg-stone-800 text-white p-4">
-      <div className="max-w-xl mx-auto">
-        <div className="text-4xl flex w-full justify-center py-6">Voxu!</div>
+    <div className="h-screen bg-stone-800 p-4 text-white">
+      <div className="mx-auto max-w-xl">
+        <div className="flex w-full justify-center py-6 text-4xl">Voxu !</div>
         <input
-          type="text"
-          className="rounded-lg w-full p-4 text-lg bg-stone-900  outline-none"
+          className="w-full rounded-lg bg-stone-900 p-4 text-lg outline-none"
           placeholder="Enter text here..."
         />
         <div className="flex gap-4 py-2">
-          <button className="rounded-lg w-full p-4 text-lg bg-stone-900">
+          <button className="w-full rounded-lg bg-stone-900 p-4 text-lg">
             Stop
           </button>
-          <button className="rounded-lg w-full p-4 text-lg bg-stone-900">
+          <button className="w-full rounded-lg bg-stone-900 p-4 text-lg">
             Test
           </button>
-          <button className="rounded-lg w-full p-4 text-lg bg-stone-900">
+          <button className="w-full rounded-lg bg-stone-900 p-4 text-lg">
             Next
           </button>
         </div>
-        <button className="w-full rounded-lg p-4 text-lg bg-stone-900">
+        <button className="w-full rounded-lg bg-stone-900 p-4 text-lg">
           Speak Clipboard
         </button>
       </div>
