@@ -41,4 +41,4 @@ class VoxCtl {
   }
 }
 
-export const voxCtl = new VoxCtl('https://your-api-endpoint');
+export const voxCtl = new VoxCtl('https://localhost:8080');
