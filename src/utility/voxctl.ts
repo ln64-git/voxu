@@ -21,11 +21,9 @@ class VoxCtl {
   stop() {
     this.sendCommand('stop');
   }
-
   speak(text: string) {
     this.sendCommand('speak', text);
   }
-
   speakClipboard() {
     this.sendCommand('speakClipboard');
   }
