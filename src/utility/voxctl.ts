@@ -18,7 +18,6 @@ class VoxCtl {
     }
   }
 
-  // Command methods
   stop() {
     this.sendCommand('stop');
   }
@@ -31,21 +30,15 @@ class VoxCtl {
     this.sendCommand('speakClipboard');
   }
 
-  // Method to update status
-  async updateStatus(setBgColor: (color: string) => void) {
+  async getStatus() {
     try {
       const response = await fetch(`${this.endpoint}/status`);
-      const data = await response.json();
-      if (data.speechActive) {
-        setBgColor('bg-green-500');
-      } else {
-        setBgColor('bg-neutral-700');
-      }
+      return await response.json();
     } catch (error) {
       console.error('Error fetching status:', error);
+      return null;
     }
   }
 }
 
-// Export an instance of the class
 export const voxCtl = new VoxCtl('https://your-api-endpoint');

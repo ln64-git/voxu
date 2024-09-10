@@ -1,12 +1,22 @@
-import './App.css';
 import { useState, useEffect } from 'react';
+import './App.css';
 import { voxCtl } from '../utility/voxctl';
 
 function App() {
   const [bgColor, setBgColor] = useState('bg-neutral-700');
 
+  async function updateStatus() {
+    const data = await voxCtl.getStatus();
+    if (data) {
+      if (data.speechActive) {
+        setBgColor('bg-green-500');
+      } else {
+        setBgColor('bg-neutral-700');
+      }
+    }
+  }
   useEffect(() => {
-    const interval = setInterval(() => voxCtl.updateStatus(setBgColor), 1000);
+    const interval = setInterval(updateStatus, 1000);
     return () => clearInterval(interval);
   }, []);
 
